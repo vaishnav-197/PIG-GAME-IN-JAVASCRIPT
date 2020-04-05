@@ -13,13 +13,13 @@ var scores,roundScore,activePlayer, dice;
 
 scores=[0,0];
 roundScore=0;
-activePlayer=1;
+activePlayer=0;
 
 
 
 
 
-document.getElementById('current-'+ activePlayer).textContent=dice;
+
 
 document.querySelector('.dice').style.display='none';
 
@@ -34,4 +34,47 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
     diceDom.src='dice-'+dice+'.png';
 
 
+    // UPDATE round score if rolled dice is not one
+
+    if (dice!==1) {
+        // add score
+        roundScore+=dice;
+        document.querySelector('#current-'+ activePlayer).textContent=roundScore;
+    } else {
+        // change player and reset current score to zer0
+        changeActive();      
+
+    }
+});
+
+   function changeActive()
+   {  
+       if (activePlayer===0) {
+            document.querySelector('#current-'+activePlayer).textContent=0;
+           activePlayer=1;
+           document.querySelector('.player-0-panel').classList.toggle('active');
+          document.querySelector('.player-1-panel').classList.toggle('active');
+          roundScore=0;
+       } else {
+            document.querySelector('#current-'+activePlayer).textContent=0;
+            activePlayer=0;
+           document.querySelector('.player-0-panel').classList.toggle('active');
+           document.querySelector('.player-1-panel').classList.toggle('active');
+           roundScore=0;         
+       }
+
+   }
+
+
+document.querySelector('.btn-hold').addEventListener('click',function(){
+
+   if (activePlayer===0) {
+       scores[0]+=roundScore;
+       document.getElementById('score-0').textContent=scores[0];
+       changeActive();
+   } else {
+       scores[1]+=roundScore;
+       document.getElementById('score-1').textContent=scores[1];
+       changeActive();
+   }
 });
