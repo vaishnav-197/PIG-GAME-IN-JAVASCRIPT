@@ -115,6 +115,8 @@ function init(){
     scores=[0,0];
     roundScore=0;
     activePlayer=0;
+    document.querySelector('#name-0').textContent='PLAYER 1';
+    document.querySelector('#name-1').textContent='PLAYER 2';
     document.querySelector('.dice1').style.display='none';
     document.querySelector('.dice2').style.display='none';
     document.querySelector('.btn-hold').style.display='block';
@@ -123,6 +125,8 @@ function init(){
     document.querySelector('#current-1').textContent=0;
     document.querySelector('#score-0').textContent=0;
     document.querySelector('#score-1').textContent=0;
+    document.querySelector('.player-0-panel').classList.add('active');
+    
     
 }
 
