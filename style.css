@@ -52,7 +52,8 @@ body {
 **********************************************/
 
 .player-name {
-    font-size: 40px;
+    color: black;
+    font-size: 45px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -66,11 +67,12 @@ body {
     text-align: center;
     font-size: 80px;
     font-weight: 100;
-    color: #EB4D4D;
+    color: midnightblue;
     margin-bottom: 130px;
+    font-weight: 500;
 }
 
-.active { background-color: #f7f7f7; }
+.active { background-color: lightblue; }
 .active .player-name { font-weight: 300; }
 
 .active .player-name::after {
@@ -95,7 +97,7 @@ body {
 }
 
 .player-current-box {
-    background-color: #EB4D4D;
+    background-color: grey;
     color: #fff;
     width: 40%;
     margin: 0 auto;
@@ -148,7 +150,13 @@ i {
     transition: margin 0.3s;
 }
 
-.btn-new { top: 45px;}
+.btn-new { 
+    top: 45px;
+    color: grey;
+    font-size: 25px;
+    font-weight: 550px;
+    letter-spacing: 1px;
+}
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
 
