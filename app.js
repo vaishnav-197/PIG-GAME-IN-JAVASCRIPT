@@ -42,39 +42,54 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
         document.querySelector('#current-'+ activePlayer).textContent=roundScore;
     } else {
         // change player and reset current score to zer0
-        changeActive();      
+        document.querySelector('#current-'+activePlayer).textContent=0;
+        activePlayer===0? activePlayer=1:activePlayer=0;
+        roundScore=0;
+
+
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+        
 
     }
 });
 
-   function changeActive()
-   {  
-       if (activePlayer===0) {
-            document.querySelector('#current-'+activePlayer).textContent=0;
-           activePlayer=1;
-           document.querySelector('.player-0-panel').classList.toggle('active');
-          document.querySelector('.player-1-panel').classList.toggle('active');
-          roundScore=0;
-       } else {
-            document.querySelector('#current-'+activePlayer).textContent=0;
-            activePlayer=0;
-           document.querySelector('.player-0-panel').classList.toggle('active');
-           document.querySelector('.player-1-panel').classList.toggle('active');
-           roundScore=0;         
-       }
-
-   }
-
-
 document.querySelector('.btn-hold').addEventListener('click',function(){
 
-   if (activePlayer===0) {
-       scores[0]+=roundScore;
-       document.getElementById('score-0').textContent=scores[0];
-       changeActive();
-   } else {
-       scores[1]+=roundScore;
-       document.getElementById('score-1').textContent=scores[1];
-       changeActive();
-   }
+    // add round score
+    scores[activePlayer]+=roundScore;
+      
+    // to update GUI
+    document.querySelector('#score-'+activePlayer).textContent=scores[activePlayer];
+    
+
+    // to check winner
+    if(scores[activePlayer]>=100){
+      document.querySelector('#name-'+activePlayer).textContent="winner!!";
+      document.querySelector('.dice').style.display='none';
+      document.querySelector('.player-0-panel').classList.remove('active')
+      document.querySelector('.player-1-panel').classList.remove('active');
+    }
+    else
+    {
+      // change player
+       changePlayer();   
+    }    
+
 });
+
+function changePlayer(){
+    // next player
+
+    activePlayer===0? activePlayer=1:activePlayer=0;
+
+    // roundscore to zero
+    roundScore=0;
+    //  update GUI
+    document.querySelector('#current-0').textContent=0;
+    document.querySelector('#current-1').textContent=0;
+
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+}
